@@ -7,13 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
-    <Folder Include="DAL\" />
     <Folder Include="ViewComponents\" />
-    <Folder Include="wwwroot\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Shop\" />
+    <Folder Include="Views\Service\" />
   </ItemGroup>
 
 </Project>
