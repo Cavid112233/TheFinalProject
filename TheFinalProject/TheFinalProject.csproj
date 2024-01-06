@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="ViewComponents\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>
 
