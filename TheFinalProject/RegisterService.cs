@@ -1,7 +1,5 @@
 ﻿using TheFinalProject.DAL;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TheFinalProject.DAL;
 
 namespace TheFinalProject
 {
