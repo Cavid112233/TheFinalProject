@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheFinalProject.DAL;
+using TheFinalProject.ViewModels;
 
 namespace TheFinalProject.Controllers
 {
@@ -16,7 +17,7 @@ namespace TheFinalProject.Controllers
         {
             HomeVM vm = new()
             {
-
+                ServiceRepairs = _appDbContext.ServiceRepairs.ToList(),
             };
 
             return View(vm);

@@ -4,6 +4,6 @@ namespace TheFinalProject.ViewModels
 {
     public class HomeVM
     {
-        public List<RepairService> RepairServices { get; set; }
+        public List<ServiceRepair> ServiceRepairs { get; set; }
     }
 }
