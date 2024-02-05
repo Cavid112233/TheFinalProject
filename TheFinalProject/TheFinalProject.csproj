@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents\" />
-    <Folder Include="Views\Shop\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
@@ -23,6 +18,25 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\AdminArea\Views\Blog\" />
+    <Folder Include="Areas\AdminArea\Views\Home\" />
+    <Folder Include="Areas\AdminArea\Views\Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Admin\fonts\.DS_Store" />
+    <None Include="wwwroot\Admin\fonts\Roboto\.DS_Store" />
+    <None Include="wwwroot\Admin\images\.DS_Store" />
+    <None Include="wwwroot\Admin\images\auth\.DS_Store" />
+    <None Include="wwwroot\Admin\images\faces\.DS_Store" />
+    <None Include="wwwroot\Admin\js\.DS_Store" />
+    <None Include="wwwroot\Admin\scss\.DS_Store" />
+    <None Include="wwwroot\Admin\scss\components\.DS_Store" />
+    <None Include="wwwroot\Admin\scss\mixins\.DS_Store" />
+    <None Include="wwwroot\Admin\vendors\.DS_Store" />
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,8 @@ namespace TheFinalProject.ViewModels
         public List<Products> Productss { get; set; }
         public List<Feedback> Feedbacks { get; set; }
         public List<LatestBlog> LatestBlogs { get; set; }
+        public Dictionary<string, string> Setting { get; set; }
+
 
     }
 }

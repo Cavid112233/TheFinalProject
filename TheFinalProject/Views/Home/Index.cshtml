@@ -94,38 +94,27 @@
                             <div id="navbar_menu">
                                 <ul class="first-ul">
                                     <li>
-                                        <a class="active" href="it_home.html">Home</a>
+                                        <a asp-controller="home" asp-action="index">Home</a>
                                         <ul>
-                                            <li><a href="it_home.html">It Home Page</a></li>
-                                            <li><a href="it_home_dark.html">It Dark Home Page</a></li>
+                                            <li><a asp-controller="home" asp-action="index">Home</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="it_about.html">About Us</a></li>
+                                    <li><a asp-controller="about" asp-action="index">About</a></li>
                                     <li>
-                                        <a href="it_service.html">Service</a>
+                                        <a asp-controller="service" asp-action="index">Service</a>
                                         <ul>
-                                            <li><a href="it_service_list.html">Services list</a></li>
-                                            <li><a href="it_service_detail.html">Services Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="it_blog.html">Blog</a>
-                                        <ul>
-                                            <li><a href="it_blog.html">Blog List</a></li>
-                                            <li><a href="it_blog_grid.html">Blog Grid</a></li>
-                                            <li><a href="it_blog_detail.html">Blog Detail</a></li>
+                                            <li><a asp-controller="service" asp-action="index">ServiceList</a></li>
+                                            <li><a asp-controller="service" asp-action="servicedetail">ServiceDetail</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Pages</a>
+                                        <a asp-controller="blog" asp-action="index">Blog</a>
                                         <ul>
-                                            <li><a href="it_career.html">Career</a></li>
-                                            <li><a href="it_price.html">Pricing</a></li>
-                                            <li><a href="it_faq.html">Faq</a></li>
-                                            <li><a href="it_privacy_policy.html">Privacy Policy</a></li>
-                                            <li><a href="it_error.html">Error 404</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">BlogList</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">BlogDetail</a></li>
                                         </ul>
                                     </li>
+                                    
                                     <li>
                                         <a href="it_shop.html">Shop</a>
                                         <ul>
@@ -136,10 +125,9 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="it_contact.html">Contact</a>
+                                        <a asp-controller="contact" asp-action="index">Contact</a>
                                         <ul>
-                                            <li><a href="it_contact.html">Contact Page 1</a></li>
-                                            <li><a href="it_contact_2.html">Contact Page 2</a></li>
+                                            <li><a asp-controller="contact" asp-action="index">Contact</a></li>
                                         </ul>
                                     </li>
                                 </ul>

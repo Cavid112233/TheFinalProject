@@ -24,7 +24,6 @@ namespace TheFinalProject.Controllers
                 Productss = _appDbContext.Productss.ToList(),
                 Feedbacks = _appDbContext.Feedbacks.ToList(),
                 LatestBlogs = _appDbContext.LatestBlogs.ToList(),
-
             };
 
             return View(vm);
