@@ -1,0 +1,48 @@
+﻿
+
+﻿
+@model CreateProductVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Blog Form</h4>
+
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Name</label>
+                    <input asp-for="Title" class="form-control" placeholder="TitleName">
+                    <span class="text-danger" asp-validation-for="Title"> </span>
+                </div>
+                <div class="form-group">
+                    <label>Profession</label>
+                    <input asp-for="OldPrice" class="form-control" placeholder="oldprice">
+                    <span class="text-danger" asp-validation-for="OldPrice"> </span>
+                </div>
+                <div class="form-group">
+                    <label>price</label>
+                    <input asp-for="NewPrice" class="form-control" placeholder="newprice">
+                    <span class="text-danger" asp-validation-for="NewPrice"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Photo</label>
+                    <input asp-for="Img" class="form-control" placeholder="Name">
+                    <span class="text-danger" asp-validation-for="Img"> </span>
+                </div>
+             
+
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button asp-controller="blog" asp-action="index" class="btn btn-light">Go Back</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <partial name="_ValidationPartial" />
+}

@@ -1,0 +1,14 @@
+﻿
+
+
+﻿
+@model Products
+
+@{
+    ViewData["Title"] = "index";
+}
+<h4>@Model.NewPrice</h4>
+<h2>@Model.Title</h2>
+<h2>@Model.OldPrice</h2>
+
+<a asp-controller="product" asp-action="index">Go Back</a>

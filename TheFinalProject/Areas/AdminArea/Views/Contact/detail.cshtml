@@ -1,0 +1,13 @@
+﻿
+
+
+﻿
+@model GetInTouch
+
+@{
+    ViewData["Title"] = "index";
+}
+<h4>@Model.Name</h4>
+<h2>@Model.Email</h2>
+<h2>@Model.PhoneNumber</h2>
+<a asp-controller="contact" asp-action="index">Go Back</a>

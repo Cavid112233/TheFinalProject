@@ -1,0 +1,44 @@
+﻿@model List<ServicePageMain>
+@{
+    ViewData["Title"] = "index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Blog Table</h4>
+                    <p class="card-description">
+                        <a asp-controller="service" asp-action="create">Add service </a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img width="160" height="160" src="~/img/blog/@item.Img">
+                                        </td>
+                                        <td>@item.Title</td>
+
+                                        <td>@item.Description</td>
+
+                                        <td>
+                                            <a asp-controller="service" asp-action="delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="mdi mdi-delete"></i></a>
+                                            <a asp-controller="service" asp-action="update" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="mdi mdi-table-edit"></i></a>
+                                            <a asp-controller="service" asp-action="detail" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="mdi mdi-account-card-details"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
