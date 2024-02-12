@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TheFinalProject.Areas.AdminArea.Controller
+namespace Backend.Areas.AdminArea.Controllers
 {
-    [Area("AdminArea")]
-    public class ContactController : Controllers
+    public class DashBoardController : Controller
     {
+        [Area("AdminArea")]
         public IActionResult Index()
         {
             return View();

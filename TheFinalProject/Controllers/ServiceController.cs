@@ -21,13 +21,6 @@ namespace TheFinalProject.Controllers
 
             return View(vm);
         }
-        public IActionResult ServiceDetail()
-        {
-            ServiceDetailVM vm = new()
-            {
-
-            };
-            return View(vm);
-        }
+   
     }
 }

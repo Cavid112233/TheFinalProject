@@ -21,12 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\AdminArea\Views\Blog\" />
-    <Folder Include="Areas\AdminArea\Views\Home\" />
-    <Folder Include="Areas\AdminArea\Views\Service\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\Admin\fonts\.DS_Store" />
     <None Include="wwwroot\Admin\fonts\Roboto\.DS_Store" />
     <None Include="wwwroot\Admin\images\.DS_Store" />

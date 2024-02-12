@@ -1,0 +1,42 @@
+﻿
+﻿
+@model CreateBlogVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Blog Form</h4>
+
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="TitleName">
+                    <span class="text-danger" asp-validation-for="Name"> </span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Profession</label>
+                    <input asp-for="Description" class="form-control" placeholder="Description">
+                    <span class="text-danger" asp-validation-for="Description"> </span>
+                </div>
+               
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Photo</label>
+                    <input asp-for="Img" class="form-control" placeholder="Name">
+                    <span class="text-danger" asp-validation-for="Img"> </span>
+                </div>
+             
+
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button asp-controller="blog" asp-action="index" class="btn btn-light">Go Back</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <partial name="_ValidationPartial" />
+}
