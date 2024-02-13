@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.Areas.AdminArea.Controllers
+namespace TheFinalProject.Areas.AdminArea.Controllers
 {
     public class DashBoardController : Controller
     {
