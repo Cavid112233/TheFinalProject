@@ -1,4 +1,4 @@
-﻿namespace Backend.Extension
+﻿namespace TheFinalProject.Extension
 {
     public static class FileExtension
     {
