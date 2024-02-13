@@ -62,7 +62,7 @@ namespace TheFinalProject.Areas.AdminArea.Controllers
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
-            var deletedservice = _appDbContext.BlogPosts.FirstOrDefault(c => c.Id == id);
+            var deletedservice = _appDbContext.ServicePageMains.FirstOrDefault(c => c.Id == id);
             if (deletedservice == null) return NotFound();
 
             Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<ServicePageMain> entityEntry = _appDbContext.ServicePageMains.Remove(deletedservice);
@@ -85,30 +85,30 @@ namespace TheFinalProject.Areas.AdminArea.Controllers
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Update(UpdateServiceVM updateBlogVM)
+        public IActionResult Update(UpdateServiceVM updateServiceVM)
         {
             if (!ModelState.IsValid) return View();
-            var existblog = _appDbContext.BlogPosts.FirstOrDefault(c => c.Id == updateBlogVM.Id);
-            if (updateBlogVM == null) return NotFound();
+            var existblog = _appDbContext.BlogPosts.FirstOrDefault(c => c.Id == updateServiceVM.Id);
+            if (updateServiceVM == null) return NotFound();
 
-            existblog.Name = updateBlogVM.Name;
-            existblog.Description = updateBlogVM.Description;
+            existblog.Name = updateServiceVM.Title;
+            existblog.Description = updateServiceVM.Description;
 
-            if (updateBlogVM.Img != null)
+            if (updateServiceVM.Img != null)
             {
 
-                if (!updateBlogVM.Img.ContentType.Contains("image/"))
+                if (!updateServiceVM.Img.ContentType.Contains("image/"))
                 {
                     ModelState.AddModelError("Photo", "only image");
                     return View();
                 }
-                if (updateBlogVM.Img.Length / 1024 > 1000)
+                if (updateServiceVM.Img.Length / 1024 > 1000)
                 {
                     ModelState.AddModelError("Photo", "Size is High");
                     return View();
                 }
 
-                existblog.Img = updateBlogVM.Img.SaveImage("img/blog", _webHostEnvironment);
+                existblog.Img = updateServiceVM.Img.SaveImage("img/blog", _webHostEnvironment);
             }
 
             _appDbContext.SaveChanges();

@@ -21,14 +21,15 @@
                                         <td>
                                             <img width="160" height="160" src="~/img/blog/@item.Img">
                                         </td>
-                                        <td>@item.Name</td>
+                                        <td>@item.Title</td>
 
-                                        <td>@item.Description</td>
+                                        <td>@item.OldPrice</td>
+                                        <td>@item.NewPrice</td>
 
                                         <td>
-                                            <a asp-controller="blog" asp-action="delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="mdi mdi-delete"></i></a>
-                                            <a asp-controller="blog" asp-action="update" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="mdi mdi-table-edit"></i></a>
-                                            <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="mdi mdi-account-card-details"></i></a>
+                                            <a asp-controller="product" asp-action="delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="mdi mdi-delete"></i></a>
+                                            <a asp-controller="product" asp-action="update" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="mdi mdi-table-edit"></i></a>
+                                            <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="mdi mdi-account-card-details"></i></a>
                                         </td>
                                     </tr>
                                 }

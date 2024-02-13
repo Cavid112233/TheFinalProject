@@ -1,5 +1,5 @@
 ﻿﻿
-@model UpdateBlogVM
+@model UpdateProductVM
 @{
     ViewData["Title"] = "Update";
 }
@@ -7,18 +7,23 @@
 <div class="col-md-6 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Update Blog Form</h4>
+            <h4 class="card-title">Update Product Form</h4>
 
             <form class="forms-sample" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="exampleInputUsername1">Name</label>
-                    <input asp-for="Name" class="form-control" placeholder="TitleName">
-                    <span class="text-danger" asp-validation-for="Name"> </span>
+                    <label for="exampleInputUsername1">title</label>
+                    <input asp-for="Title" class="form-control" placeholder="TitleName">
+                    <span class="text-danger" asp-validation-for="Title"> </span>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Profession</label>
-                    <input asp-for="Description" class="form-control" placeholder="Description">
-                    <span class="text-danger" asp-validation-for="Description"> </span>
+                    <label for="exampleInputEmail1">oldprice</label>
+                    <input asp-for="OldPrice" class="form-control" placeholder="old">
+                    <span class="text-danger" asp-validation-for="OldPrice"> </span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">newprice</label>
+                    <input asp-for="NewPrice" class="form-control" placeholder="new">
+                    <span class="text-danger" asp-validation-for="NewPrice"> </span>
                 </div>
 
                 <div class="form-group">
@@ -29,7 +34,7 @@
 
 
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button asp-controller="blog" asp-action="index" class="btn btn-light">Go Back</button>
+                <button asp-controller="product" asp-action="index" class="btn btn-light">Go Back</button>
             </form>
         </div>
     </div>
