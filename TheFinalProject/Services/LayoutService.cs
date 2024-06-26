@@ -1,5 +1,4 @@
 ﻿using System;
-using TheFinalProject.DataAccessLayer;
 using TheFinalProject.Interfaces;
 using TheFinalProject.Models;
 using TheFinalProject.ViewModels.BasketViewModels;

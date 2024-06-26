@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
+using TheFinalProject.DAL;
+using TheFinalProject.Models;
+using TheFinalProject.ViewModels;
 
 namespace TheFinalProject.Areas.Admin.Controllers
 {
