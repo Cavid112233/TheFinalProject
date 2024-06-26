@@ -1,0 +1,22 @@
+﻿@model Category
+
+<div class="col-md-6 p-5">
+    <div class="card mb-4">
+        <h5 class="card-header">Name</h5>
+        <div class="card-body">
+            <div class="form-floating">
+                <form method="post">
+                    <input type="text"
+                           class="form-control"
+                           id="floatingInput"
+                           asp-for="Name"
+                           aria-describedby="floatingInputHelp" />
+                    <span id="floatingInputHelp" class="form-text text-danger" asp-validation-for="Name"></span>
+                    <button type="submit" class="btn btn-primary my-3">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

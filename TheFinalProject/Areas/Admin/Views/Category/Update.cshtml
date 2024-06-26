@@ -1,0 +1,24 @@
+﻿@model Category
+
+    <h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">Category /</span> Update</h4>
+    <div class="col-md-6 p-5">
+        <div class="card mb-4">
+            <h5 class="card-header py-4">Current Name: @Model.Name</h5>
+            <h5 class="card-header py-2"> New Name:</h5>
+            <div class="card-body">
+                <div class="form-floating">
+                    <form method="post">
+                        <input type="text"
+                               class="form-control"
+                               id="floatingInput"
+                               asp-for="Name"
+                               aria-describedby="floatingInputHelp" />
+                        <span id="floatingInputHelp" class="form-text text-danger " asp-validation-for="Name"></span>
+                        <button type="submit" class="btn btn-success my-3">Save Changes</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+

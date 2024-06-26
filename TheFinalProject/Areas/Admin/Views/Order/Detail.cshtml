@@ -1,0 +1,92 @@
+﻿@model Order
+@{
+    int count = 0;
+}
+
+<h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">Order /</span> Details</h4>
+<div class="p-4">
+    <div class="d-flex flex-row justify-content-between px-4 pb-4">
+
+        <div class="col-lg-10">
+            <h3 class="h3 mb-3">Order: <span class="text-info">@Model.Status</span></h3>
+        </div>
+        <div class="col-lg-2">
+            <a class="btn btn-primary" asp-action="index" asp-controller="order" asp-area="manage">Go To Home</a>
+        </div>
+
+    </div>
+
+    <div class=" my-4">
+        <ul style="list-style:none; padding-left:0;">
+
+            <li>No: <span style="text-decoration:underline">@Model.No</span> </li>
+            <li> Full Name: <span style="text-decoration:underline">@($"{Model.Name} {Model.Surname}")</span></li>
+            <li>Country: <span style="text-decoration:underline">@Model.Country</span></li>
+            <li>City: <span style="text-decoration:underline">@Model.City</span></li>
+            <li>Address: <span style="text-decoration:underline">@Model.AddressLine</span></li>
+            <li>Zip Code: <span style="text-decoration:underline">@Model.PostalCode</span></li>
+            <li>Phone Number: <span style="text-decoration:underline">@Model.PhoneNumber</span></li>
+
+        </ul>
+    </div>
+
+    <h4>Order Items</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Products Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (OrderItem order in Model.OrderItems)
+                    {
+                            count++;
+
+                        <tr>
+                            <td>@count</td>
+                            <td>@order.Product.Title</td>
+                            <td>$ @order.Price</td>
+                            <td>@order.Count</td>
+                            <td>$ @(order.Price * order.Count)</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-6 pt-2 m-4">
+    <div class="card mb-4">
+        <h5 class="card-header">Change Order Status</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <form method="post" asp-action="changeStatus" asp-area="manage" asp-controller="order">
+                <input type="hidden" name="Id" value="@Model.Id" class="form-control" />
+                <input type="hidden" value="@Model.No" class="form-control" />
+                <div class="my-3">
+                    <label asp-for="Status" class="form-label">Status</label>
+                    <select asp-for="Status" class="form-select" asp-items="@Html.GetEnumSelectList<OrderType>()">
+                    </select>
+                    <span asp-validation-for="Status" class="text text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <label asp-for="Comment" class="form-label"></label>
+                    <input asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary my-3 col-12">Change Status</button>
+            </form>
+           
+
+
+        </div>
+    </div>
+</div>

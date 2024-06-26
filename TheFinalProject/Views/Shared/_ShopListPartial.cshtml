@@ -1,0 +1,183 @@
+﻿@model ShopVM
+
+
+<div class="container">
+    <div class="section-container">
+        <div class="shop-content">
+            <!-- Shop Filters -->
+            <div class="filters">
+                <div class="filter">
+                    <h5>Categories</h5>
+                    <ul>
+                        @foreach (Category category in Model.Categories)
+                        {
+                                
+                            <li>
+                                <a class="categoryFilter" data-minPrice="@ViewBag.minPrice" data-maxPrice="@ViewBag.maxPrice" data-materialId="@ViewBag.materialId" data-categoryId="@category.Id" data-pageIndex="@ViewBag.pageIndex">@category.Name</a>
+                                @if (category.Products?.Count() > 0 && category.Products?.Count() != null)
+                                {
+                                    <span>@category.Products?.Count()</span>
+                                }
+                                else
+                                {
+                                    <span>0</span>
+                                }
+
+
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div>
+                <hr>
+                <div class="filter">
+                    <h5>Material</h5>
+                    <ul>
+                        @foreach (Material material in Model.Materials)
+                        {
+                            <li>
+                                <input type="checkbox" name="" id="">
+                                <a class="materialSelector" data-minPrice="@ViewBag.minPrice" data-maxPrice="@ViewBag.maxPrice" data-materialId="@material.Id" data-categoryId="@ViewBag.categoryId" data-pageIndex="@ViewBag.pageIndex">@material.Name</a>
+                                <span>@material.Products?.Count()</span>
+                            </li>
+
+                        }
+                    </ul>
+
+                </div>
+                <hr>
+                <div class="price-range">
+                    <h5>Price Range</h5>
+                    <div id="slider-range"></div>
+                    <div class="price-amount-range">
+                        Price:   $<span id="min-value"></span> - $<span id="max-value"></span>
+                        <button data-materialId="@ViewBag.materialId" data-categoryId="@ViewBag.categoryId" data-pageIndex="@ViewBag.pageIndex"  id="filterBtn">Go</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Shop Filters -->
+            <div class="product-grid-view">
+                <div class="d-flex justify-content-between mb-3 align-items-center">
+                    <p class="results-count mt-3">Showing 1–6 of @Model.Products.Count() results</p>
+                    <div class="sort-select">
+                        <i class='bx bx-chevron-down'></i>
+                        <select name="">
+                            <option value="" selected="selected">Default sorting</option>
+                            <option value="">Sort by popularity</option>
+                            <option value="">Sort by average rating</option>
+                            <option value="">Sort by latest</option>
+                            <option value="">Sort by price: low to high</option>
+                            <option value="">Sort by price: high to low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products view with grid -->
+                <!-- Product Preview Section -->
+                <section id="HandPicked_Lights">
+                    <div class="handLights">
+                        @foreach (Product product in Model.Products)
+                        {
+                            <div class="handLight shop-page-product">
+                                <div class="product-inf">
+                                    <a asp-controller="product" asp-action="details" asp-route-id="@product.Id">
+                                        @if (product.DiscountedPrice > 0)
+                                        {
+                                            <span class="on-sale">Sale!</span>
+                                        }
+                                        <img src="~/assets/images/product/@product.MainImage" alt="">
+                                        <h4>@product.Title</h4>
+                                    </a>
+
+                                </div>
+
+                                <div class="prices">
+                                    @if (product.DiscountedPrice > 0)
+                                    {
+                                        <del><span class="product_salePrice">$@product.Price</span></del>
+                                        <span class="product_Price">$@product.DiscountedPrice</span>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="product_Price">$@product.Price</span>
+                                    }
+                                </div>
+                                <div class="rating">
+                                    <span><i class='bx bxs-star'></i></span>
+                                    <span><i class='bx bxs-star'></i></span>
+                                    <span><i class='bx bx-star'></i></span>
+                                    <span><i class='bx bx-star'></i></span>
+                                    <span><i class='bx bx-star'></i></span>
+                                </div>
+                                <div class="cart_btn">
+                                    <a data-id="@product.Id" class="addToCart">Add To Cart</a>
+                                </div>
+
+                            </div>
+
+                        }
+
+
+
+                    </div>
+                </section>
+                <!-- Product Preview Section -->
+                <!-- Products view with grid -->
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul class="pagination-box">
+                        @if (ViewBag.pageIndex> 1)
+                        {
+                            <li><a class="previous pageIn" data-minPrice="@ViewBag.minPrice" data-maxPrice="@ViewBag.maxPrice" data-materialId="@ViewBag.materialId" data-categoryId="@ViewBag.categoryId" data-pageIndex="@(ViewBag.pageIndex-1) "><i class='bx bx-left-arrow-alt'></i></a></li>
+                        }
+                        @for (int i = 1; i <= ViewBag.totalPage; i++)
+                        {
+                            <li class="@(ViewBag.pageIndex == i ? "active":"")">
+                                <a class="pageIn " data-minPrice="@ViewBag.minPrice" data-maxPrice="@ViewBag.maxPrice" data-materialId="@ViewBag.materialId" data-categoryId="@ViewBag.categoryId"  data-pageIndex="@i" >@i</a>
+                            </li>
+                        }
+
+                        @if (ViewBag.pageIndex < ViewBag.totalPage)
+                        {
+                            <li>
+                                <a class="next pageIn" data-minPrice="@ViewBag.minPrice" data-maxPrice="@ViewBag.maxPrice" data-materialId="@ViewBag.materialId" data-categoryId="@ViewBag.categoryId" data-pageIndex="@(ViewBag.pageIndex+1)">
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </li>
+
+                        }
+
+                    </ul>
+                </div>
+                <!-- Pagination -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        const sliderRange = $("#slider-range");
+        const minSpan = $("#min-value");
+        const maxSpan = $("#max-value");
+
+        sliderRange.slider({
+            range: true,
+            min: 0,
+            max: 8500,
+            values: [2000, 3000],
+            slide: function (event, ui) {
+                minSpan.text(ui.values[0].toFixed(2));
+                maxSpan.text(ui.values[1].toFixed(2));
+            }
+        });
+
+        minSpan.text(sliderRange.slider("values", 0).toFixed(2));
+        maxSpan.text(sliderRange.slider("values", 1).toFixed(2));
+    });
+
+</script>

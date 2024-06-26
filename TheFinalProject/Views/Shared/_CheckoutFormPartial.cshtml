@@ -1,0 +1,69 @@
+﻿@model Order
+
+<form method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label">First Name*</label>
+        <input asp-for="Name" style="accent-color: #F6F5F2;" type="text" class="form-control" >
+        <span asp-validation-for="Name" class="text text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Surname" class="form-label">Last Name*</label>
+        <input asp-for="Surname" class="form-control" >
+        <span asp-validation-for="Surname" class="text text-danger"></span>
+
+    </div>
+    <div class="col-12">
+        <label asp-for="Country" class="form-label">Country / Region</label>
+        <input asp-for="Country" class="form-control"  >
+        <span asp-validation-for="Country" class="text text-danger"></span>
+
+    </div>
+    <div class="col-12">
+        <label asp-for="AddressLine" class="form-label">Address</label>
+        <input asp-for="AddressLine" class="form-control" >
+        <span asp-validation-for="AddressLine" class="text text-danger"></span>
+
+    </div>
+    
+    <div class="col-12">
+        <label asp-for="City" class="form-label">City</label>
+        <input asp-for="City" class="form-control" >
+        <span asp-validation-for="City" class="text text-danger"></span>
+
+    </div>
+    <div class="col-12">
+        <label asp-for="State" class="form-label">State</label>
+        <input asp-for="State" class="form-control"  >
+        <span asp-validation-for="State" class="text text-danger"></span>
+
+    </div>
+
+    <div class="col-12">
+        <label asp-for="PostalCode" class="form-label">Zip</label>
+        <input asp-for="PostalCode" class="form-control" >
+        <span asp-validation-for="PostalCode" class="text text-danger"></span>
+
+    </div>
+    <div class="col-12">
+        <label asp-for="PhoneNumber" class="form-label">Phone*</label>
+        <input asp-for="PhoneNumber" class="form-control" >
+        <span asp-validation-for="PhoneNumber" class="text text-danger"></span>
+
+    </div>
+    <div class="col-12">
+        <label asp-for="Email" class="form-label">Email*</label>
+        <input asp-for="Email" class="form-control"  placeholder="emin14@mail.ru">
+        <span asp-validation-for="Email" class="text text-danger"></span>
+
+    </div>
+    
+    <div class="col-12 mt-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Order notes (optional)</label>
+        <textarea style="background-color: #F6F5F2;" class="form-control"  rows="3"></textarea>
+    </div>
+    <div class="checkout ">
+        <button type="submit" class="checkout_btn col-12">Place Order</button>
+    </div>
+
+</form>

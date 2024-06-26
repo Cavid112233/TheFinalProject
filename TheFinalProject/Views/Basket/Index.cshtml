@@ -1,0 +1,50 @@
+﻿@model List<BasketVM>
+
+    <hr>
+
+    <section id="Cart">
+        <div class="container">
+            <div class="section-container">
+                <div class="cart-checkout-heading">
+                    <h1>Cart</h1>
+                    <hr>
+                </div>
+                <div class="cart-content">
+                    <div class="cart-table">
+                        <form action="">
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="productTable">
+                                    @await Html.PartialAsync("_BasketProductTablePartial", Model)
+                                    
+                                </tbody>
+                            </table>
+                        </form>
+
+                    </div>
+                    <div class="cart-totals">
+                        <h2>Cart Totals</h2>
+                        <hr>
+                        <div class="cart-total-box">
+                            @await Html.PartialAsync("_CartTotalPartial", Model)
+                        </div>
+                        
+                        <div class="checkout">
+                            <a asp-controller="order" asp-action="checkout" class="checkout_btn">Proceed To Checkout</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

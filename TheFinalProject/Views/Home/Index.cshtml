@@ -1,0 +1,160 @@
+﻿@model HomeVM
+
+<!-- HomeSlide Section -->
+<section id="homeSlide">
+    <div class="container">
+        <div class="titles">
+            <h1>Choose our lights and make your interior unique.</h1>
+            <p>Well designed lights for your home & office environments. <br>Our high quality lights will make your place modern.</p>
+            <a class="white_btn" href="">Explore our collections</a>
+        </div>
+    </div>
+</section>
+<!-- HomeSlide Section -->
+<!-- Departments Section -->
+<section id="Departments">
+    <div class="container">
+        <div class="section-container" style="background-color: #F6F5F2;">
+            <div style="margin: 26px 0;" class="d-flex align-items-center">
+                <h2>Shop by departments</h2>
+                <p class="shopLinks">
+                    <a href="">See all</a>
+                    <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/arrow-new-tab.png" alt="">
+                </p>
+            </div>
+            <div class="departments">
+                <div class="department">
+                    <img src="	https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/cat-3.png" alt="">
+                    <a href="">Floor Lamps</a>
+
+                </div>
+                <div class="department">
+                    <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/cat-2.png" alt="">
+                    <a href="">Indoor Lighting</a>
+                </div>
+                <div class="department">
+                    <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/cat-4.png" alt="">
+                    <a href="">Wall Lighting</a>
+                </div>
+                <div class="department">
+                    <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/cat-1.png" alt="">
+                    <a href="">Outdoor Lighting</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Departments Section -->
+<!-- Product Preview Section -->
+<section id="HandPicked_Lights">
+    <div class="container">
+        <div class="section-container">
+            <div style="margin: 26px 0;" class="d-flex align-items-center">
+                <h2>Handpicked lights</h2>
+                <p class="shopLinks">
+                    <a href="">See all</a>
+                    <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/arrow-new-tab.png" alt="">
+                </p>
+            </div>
+            <div class="handLights">
+                @await Html.PartialAsync("_ProductCardPartial",Model)
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Preview Section -->
+<!-- Banner Section -->
+<section class="Banner">
+    <div class="container">
+        <div class="banner-boxes">
+            <div class="banner-content">
+                <div class="banner-titles">
+                    <h1>Every home deserves better lighting</h1>
+                    <p>Unique collections of premium products <br> starting from affordable price.</p>
+                    <a class="white_btn wpo" href="">See outdoor lightings</a>
+                </div>
+
+            </div>
+            <div class="banner-content banner-box2">
+                <div class="banner-titles">
+                    <h1>Make your tables elegant and modern</h1>
+                    <p>Unique collections of premium products <br> starting from affordable price.</p>
+                    <a class="white_btn wpo" href="">See indoor lightings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section -->
+<!-- Collections Section -->
+<section id="Collections">
+    <div class="container">
+        <div class="section-container">
+            <div class="collections-title">
+                <h4>Our Collections</h4>
+                <p>Pellentesque id lorem sed ipsum lobortis suscipit sit amet vitae urna. Quisque vel <br>ligula placerat, tempor ipsum ac, iaculis urna. Integer eget nulla neque</p>
+            </div>
+            <div class="collections-box">
+                <div class="collection">
+                    <img src="~/assets/images/collections/home-collection-1.png" alt="">
+                    <h5>Wall Lighting</h5>
+                    <p class="shopLinks">
+                        <a href="">Explore this collection </a>
+                        <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/arrow-new-tab.png" alt="">
+                    </p>
+                </div>
+                <div class="collection">
+                    <img src="~/assets/images/collections/home-collection-2.png" alt="">
+                    <h5>Living & Bedroom Lighting</h5>
+                    <p class="shopLinks">
+                        <a href="">Explore this collection </a>
+                        <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/arrow-new-tab.png" alt="">
+                    </p>
+                </div>
+                <div class="collection">
+                    <img src="~/assets/images/collections/home-collection-3.png" alt="">
+                    <h5>Table Lighting</h5>
+                    <p class="shopLinks">
+                        <a href="">Explore this collection </a>
+                        <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/arrow-new-tab.png" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Collections Section -->
+<!-- Banner Section -->
+<section id="Woman-banner">
+    <div class="container">
+        <div class="section-container" style="background-color: #F6F5F2;">
+            <div class="wbanner-content">
+                <div class="banner-text">
+                    <h2>High quality craftmanship on every aspect, brings best of its kind.</h2>
+                    <p>Pellentesque id lorem sed ipsum lobortis suscipit sit amet vitae urna.</p>
+                    <a href="" class="learn-more" style="width: 56%;">Learn More</a>
+                </div>
+                <div class="wbanner-img">
+                    <img src="~/assets/images/banners/woman-banner.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section -->
+<!-- Big Banner -->
+<section class="Banner">
+    <div class="container">
+        <div class="big-banner banner-content">
+            <div class="banner-titles">
+                <h1>World’s best outdoor lighting collections for you.</h1>
+                <p>Unique collections of premium products <br> starting from affordable price.</p>
+                <a class="white_btn wpo" href="">See outdoor lightings</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Big Banner -->

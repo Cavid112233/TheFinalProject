@@ -1,0 +1,81 @@
+﻿@model OrderVM
+
+<hr>
+
+<section id="Checkout">
+    <div class="container">
+        <div class="section-container">
+            <div class="cart-checkout-heading">
+                <h1>Checkout</h1>
+                <hr>
+            </div>
+            <div class="checkout-content">
+                <div class="billing-details">
+                    <h3>Billing Details</h3>
+                    <div class="details">
+                        @await Html.PartialAsync("_CheckoutFormPartial", Model.Order) 
+
+                    </div>
+
+                </div>
+                <div class="checkout-products">
+                    <h3>Your Order</h3>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BasketVM basketVM in Model.BasketVMs)
+                            {
+                                <tr>
+                                    <td class="product-image">
+                                        <a >
+                                            <img src="~/assets/images/product/@basketVM.Image" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a >@basketVM.Title</a>
+                                        <span class="product-qty">x @basketVM.Count</span>
+                                    </td>
+                                    <td >
+                                        @if (basketVM.DiscountedPrice > 0)
+                                        {
+
+                                            <span class="product_Price" style="color:green;">$@(basketVM.DiscountedPrice * basketVM.Count )</span>
+
+                                        }
+                                        else
+                                        {
+                                            <span class="product_Price">$@(basketVM.Price * basketVM.Count )</span>
+                                        }
+                                    </td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+
+                    </table>
+                    <div class="cart-totals">
+
+                        <div class="sub-content">
+                            <h5>SubTotal</h5>
+                            <span class="subtotal">$@((decimal)Model.BasketVMs.Sum(b => b.DiscountedPrice > 0 ? (b.Count * b.DiscountedPrice) : (b.Count * b.Price)))</span>
+                        </div>
+                        <hr>
+                        <div class="total-content">
+                            <h4>Total</h4>
+                            <span class="subtotal">$@((decimal)Model.BasketVMs.Sum(b => b.DiscountedPrice > 0 ? (b.Count * b.DiscountedPrice) : (b.Count * b.Price)))</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

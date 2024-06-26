@@ -1,0 +1,421 @@
+﻿@inject ILayoutService layoutservice
+
+@{
+    //IDictionary<string, string> settings = await layoutservice.GetSettings();
+    IEnumerable<BasketVM> basketVMs = await layoutservice.GetBaskets();
+   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminate</title>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-all">
+                <div class="leftpart align-items-center">
+                    <div class="logo">
+                        <a asp-controller="Home" asp-action="index">
+                            <img src="~/assets/images/logo/logo.png" alt="">
+                        </a>
+
+                    </div>
+                    <div class="searchBar">
+                        <i class='bx bx-search'></i>
+                        <input type="search" id="search" placeholder="Search products...">
+
+                    </div>
+                    <div class="navs">
+                        <nav>
+                            <ul type="none">
+                                <li>
+                                    <a asp-controller="Home" asp-action="index">Home</a>
+                                </li>
+                                <li class="shopnav">
+                                    <a asp-controller="shop" asp-action="index">
+                                        Shop<span><i class='bx bx-chevron-down'></i></span>
+                                        <div class="spacer"></div>
+
+                                    </a>
+                                    <div class="shopnav-dropdown ">
+                                        <div class="container">
+                                            <div class="section-container">
+                                                <ul class=" dropdown-content">
+                                                    <li>
+                                                        <p>Essential Pages</p>
+                                                        <ul class="dropdown-column">
+                                                            <li>
+                                                                <a asp-controller="product" asp-action="details">
+                                                                    <span>Simple Product</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="">
+                                                                    <span>Variable Product</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="">
+                                                                    <span>External Product</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="">
+                                                                    <span>On Sale Product</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="">
+                                                                    <span>Out of Stock</span>
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <p>Essential Pages 2</p>
+                                                        <ul class="dropdown-column">
+                                                            <li>
+                                                                <a href="">
+                                                                    <span>Product Reviews</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a asp-controller="basket" asp-action="index">
+                                                                    <span>Cart</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a asp-controller="order" asp-action="checkout">
+                                                                    <span>Checkout</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a asp-controller="account" asp-action="profile">
+                                                                    <span>My Account</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <img style="width: 310px; height: 250px;" src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/menu-1.png" alt="">
+
+                                                            <span style="display: inline-block;margin-top: 5px; font-weight: 600;">
+                                                                Our Collections
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-controller="blog" asp-action="index">
+                                                            <img style="width: 310px; height: 250px;" src="	https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/menu-2.png" alt="">
+                                                            <span style="display: inline-block; margin-top: 5px; font-weight: 600;">
+                                                                <span>Explore our Blog</span>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a asp-controller="collections" asp-action="index">Collections</a>
+                                </li>
+                                <li class="blognav">
+                                    <a asp-controller="blog" asp-action="index">
+                                        Blog<span><i class='bx bx-chevron-down'></i></span>
+                                        <div class="spacer"></div>
+
+                                    </a>
+                                    <div class="mini-dropdown">
+                                        <ul class="mini-dropdown-content">
+                                            <li>
+                                                <a href="">
+                                                    <span>Single Post </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span> Blog Post</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span>Post with Comments </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span> Search results</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+                                <li class="pagesnav">
+                                    <a href="">
+                                        Pages<span><i class='bx bx-chevron-down'></i></span>
+                                        <div class="spacer"></div>
+
+                                    </a>
+                                    <div class="mini-dropdown pages ">
+                                        <ul class="mini-dropdown-content">
+                                            <li>
+                                                <a asp-controller="aboutus" asp-action="index">
+                                                    <span>About Us </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="aboutus" asp-action="contactus">
+                                                    <span> Contact Us</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span>404 </span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="rightpart">
+                    <div id="account">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                        {
+                            <a asp-controller="account" asp-action="profile">
+                                <i class='bx bxs-user'></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="account" asp-action="login">
+                                <i class='bx bxs-user'></i>
+                            </a>
+
+                        }
+
+
+
+
+                    </div>
+                    <div id="cart">
+                        <button class="minicart-btn">
+                            <span style="margin-right: 16px;">Cart</span>
+                            <span class="minicart-badge">0</span>
+
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- Header Section -->
+    @RenderBody();
+
+    <!-- Mini Cart -->
+    <section id="MiniCart">
+        <button class="minicart-close-btn">
+            <svg width="30" height="30">
+                <path d="M12 13.06l3.712 3.713 1.061-1.06L13.061 12l3.712-3.712-1.06-1.06L12 10.938 8.288 7.227l-1.061 1.06L10.939 12l-3.712 3.712 1.06 1.061L12 13.061z"></path>
+            </svg>
+        </button>
+
+        <div id="Cart" class="cartbody">
+            @await Html.PartialAsync("_BasketPartial", basketVMs)
+        </div>
+    </section>
+
+    <!-- Mini Cart -->
+    <!-- Footer -->
+    <footer>
+        <section>
+            <div class="container">
+                <div class="section-container-updated ">
+                    <hr>
+                    <div class="all-features ">
+
+                        <div class="feature">
+                            <img src="~/assets/images/features/feature-1.png" alt="">
+                            <h5>Free shipping for <br> order > $300</h5>
+                        </div>
+                        <div class="feature">
+                            <img src="~/assets/images/features/feature-2.png" alt="">
+                            <h5>Easy return & <br> refund policy</h5>
+                        </div>
+                        <div class="feature">
+                            <img src="~/assets/images/features/feature-3.png" alt="">
+                            <h5>Super fast <br> delivery</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-container">
+                    <hr>
+                    <div class="bottom-footer">
+                        <div class="footerInfo">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="~/assets/images/logo/logo.png" alt="">
+                                </a>
+
+                            </div>
+                            <p>Unique collections of premium products <br> starting from affordable price.</p>
+                            <div class="d-flex justify-content-between mt-5">
+                                <div>
+                                    <h5>Contact Us</h5>
+                                    <p>
+                                        312, Awesome Street,
+                                        <br>
+                                        Chennai, Tamilnadu,
+                                        <br>
+                                        India – 600001
+
+                                    </p>
+
+                                </div>
+                                <div>
+                                    <h5>Email Us</h5>
+                                    <p>yourmail@mail.com</p>
+                                    <p>+01 234 5678</p>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer-links">
+                            <div class="links">
+                                <div class="mb-5">
+                                    <h5>Quick Links</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Shop Locator</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Return Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Contact Us</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div>
+                                    <h5>Account Info</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="">My Account</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Order Tracking</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Your Orders</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-5">
+                                    <h5>Shopping</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="">Collections</a>
+                                        </li>
+                                        <li>
+                                            <a href="">New Arrivals</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Best Selling</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                                <div>
+                                    <h5>Follow Us</h5>
+                                    <ul class="media-links">
+                                        <li>
+                                            <a href=""><i class='bx bxl-instagram'></i></a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class='bx bxl-facebook'></i></a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class='bx bxl-twitter'></i></a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <hr>
+                <div class="d-flex justify-content-between m-4 px-3">
+                    <div>
+                        <p style="font-weight: 100;">Copyright AgniHD. 2022 All rights reserved.</p>
+                    </div>
+                    <div class="payment">
+                        <img src="https://storage.googleapis.com/agni_patterns_bucket/luminate/payment-methods.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer -->
+
+    <script src="~/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+﻿@model Product
+
+<h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">Product /</span> Update</h4>
+
+<!-- Basic -->
+<div class="col-md-6 pt-2 m-4">
+    <div class="card mb-4">
+        <h5 class="card-header">Basic</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <form method="post" asp-action="update" asp-area="manage" asp-controller="product" enctype="multipart/form-data">
+                <div class="my-3">
+                    <label asp-for="Title" for="defaultFormControlInput" class="form-label">Name</label>
+                    <input asp-for="Title" type="text"
+                           class="form-control"
+                           id="defaultFormControlInput"
+                           placeholder="Product name"
+                           aria-describedby="defaultFormControlHelp" />
+                    <span id="defaultFormControlHelp" class="form-text text-danger" asp-validation-for="Title"></span>
+                </div>
+
+                <div class="input-group my-3">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="Price" type="text"
+                           class="form-control"
+                           placeholder="Price"
+                           aria-label="Amount (to the nearest dollar)" />
+                    <span class="input-group-text">.00</span>
+                    <span class="form-text text-danger" asp-validation-for="Price"></span>
+
+                </div>
+                <div class="input-group my-3">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="DiscountedPrice"
+                           class="form-control"
+                           placeholder="Discount Price"
+                           aria-label="Amount (to the nearest dollar)" />
+                    <span class="input-group-text">.00</span>
+                    <span class="form-text text-danger" asp-validation-for="DiscountedPrice"></span>
+
+                </div>
+                <div class="my-3">
+                    <label asp-for="Count" class="form-label"></label>
+                    <input asp-for="Count" class="form-control">
+                    <span class="text text-danger" asp-validation-for="Count"></span>
+                </div>
+                <div class="my-3">
+                    <label asp-for="CategoryId" for="exampleFormControlSelect1" class="form-label">Category selection</label>
+                    <select asp-for="CategoryId" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-items="new SelectList(ViewBag.Categories,nameof(Category.Id), nameof(Category.Name))">
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text text-danger"></span>
+                </div>
+                <div class="my-3">
+                    <label asp-for="MaterialId" for="exampleFormControlSelect1" class="form-label">Material Selection</label>
+                    <select asp-for="MaterialId" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-items="new SelectList(ViewBag.Materials,nameof(Material.Id), nameof(Material.Name))">
+                    </select>
+                    <span asp-validation-for="MaterialId" class="text text-danger"></span>
+                </div>
+                <div class="my-3">
+                    <label asp-for="MainFile" for="formFile" class="form-label">Product Main Image</label>
+                    <input asp-for="MainFile" class="form-control" id="formFile" />
+                    <span class="text text-danger" asp-validation-for="MainFile"></span>
+                </div>
+                <div class="my-3">
+                    <label asp-for="Files" for="formFileMultiple" class="form-label">Product Detail Images</label>
+                    <input asp-for="Files" class="form-control" id="formFileMultiple" multiple />
+                    <span class="text text-danger" asp-validation-for="Files"></span>
+                </div>
+                <div class="row my-3 productImages">
+
+                    @await Html.PartialAsync("_ProductImagesPartial", Model.ProductImages)
+                </div>
+
+                <div class="input-group my-3">
+                    <span class="input-group-text">Description</span>
+                    <textarea class="form-control" asp-for="Description" aria-label="Description" placeholder="Type here..."></textarea>
+                    <span asp-validation-for="Description" class="text text-danger"></span>
+
+                </div>
+                <div class="input-group my-2">
+                    <span class="input-group-text">Full Description</span>
+                    <textarea class="form-control" asp-for="FullDescription" aria-label="Full Description" placeholder="Type here..."></textarea>
+                    <span asp-validation-for="FullDescription" class="text text-danger"></span>
+
+                </div>
+                <button type="submit" class="btn btn-primary my-4 col-12">Submit</button>
+            </form>
+            @Html.ValidationSummary()
+
+
+        </div>
+    </div>
+</div>
+

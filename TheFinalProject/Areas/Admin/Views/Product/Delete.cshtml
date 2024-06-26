@@ -1,0 +1,114 @@
+﻿@model Product
+
+<h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">Product /</span> Details</h4>
+<div class="p-4">
+    <div class="d-flex flex-row justify-content-between px-4 pb-4">
+
+        <div class="col-lg-10">
+            <h3 class="h3 mb-3">Product Name: <span class="text-info">@Model.Title</span></h3>
+        </div>
+        <div class="col-lg-2">
+            <a class="btn btn-primary" asp-action="index" asp-controller="product" asp-area="manage">Go To Home</a>
+            <a class="btn btn-danger" asp-action="deleteProduct" asp-controller="product" asp-route-id="@Model.Id" asp-area="manage">Delete</a>
+
+        </div>
+
+    </div>
+
+    <div class="row my-3">
+
+        <div class="col-lg-12 row d-flex justify-content-between ">
+
+            <div class="card mx-3" style="width: 12rem;">
+                <div class="card-body">
+                    <img style="width : 85px;object-fit:contain" src="~/assets/images/product/@Model.MainImage" />
+                    <h5 class="card-title"><strong> Main Image</strong></h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class=" my-4">
+        <ul style="list-style:none; padding-left:0;">
+
+            <li>Count: <span style="text-decoration:underline">@Model.Count</span> </li>
+            <li> Price: <span style="text-decoration:underline">@Model.Price</span>$</li>
+            <li>Discounted Price: <span style="text-decoration:underline">@Model.DiscountedPrice</span>$</li>
+
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Created By</th>
+                        <th>Created At</th>
+                        <th>Description</th>
+                        <th>FullDescription</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>@Model.CreatedBy</th>
+                        <th>@Model.CreatedAt?.ToString("dd-MMMM-yyyy")</th>
+                        <th>
+                            <div class="product-description-short">
+                                @if (Model.Description.Length < 40)
+                                {
+                                    @Model.Description
+
+                                }
+                                else
+                                {
+                                    @Model.Description.Substring(0, 40)
+                                    @if (Model.Description.Length > 40)
+                                    {
+                                        <a href="#" class="show-more">Show More</a>
+                                    }
+
+                                }
+
+                            </div>
+                            <div class="product-description-full" style="display: none">
+                                @Model.Description
+                                <a href="#" class="show-less">Show Less</a>
+                            </div>
+
+
+                        </th>
+
+
+                        <th>
+                            <div class="product-description-short">
+                                @if (Model.FullDescription.Length < 50)
+                                {
+                                    @Model.FullDescription
+                                }
+                                else
+                                {
+                                    @Model.FullDescription.Substring(0, 70)
+                                    @if (Model.FullDescription.Length > 70)
+                                    {
+                                        <a href="#" class="show-more">Show More</a>
+                                    }
+
+                                }
+
+                            </div>
+                            <div class="product-description-full" style="display: none">
+                                @Model.FullDescription
+                                <a href="#" class="show-less">Show Less</a>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

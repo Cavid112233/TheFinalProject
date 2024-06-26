@@ -1,0 +1,45 @@
+﻿@model Material
+
+<h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">Material /</span> Details</h4>
+<div class="p-4">
+    <div class="d-flex flex-row justify-content-between px-4 pb-4">
+
+        <div class="col-lg-10">
+            <h3 class="h3 mb-3">Material Name: <span class="text-info">@Model.Name</span></h3>
+        </div>
+        <div class="col-lg-2">
+            <a class="btn btn-primary" asp-action="index" asp-controller="material" asp-area="manage">Go To Home</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Products Name</th>
+                        <th>Created At</th>
+                        <th>Created By</th>
+                        <th>Updated At</th>
+                        <th>Updated By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Product product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Title</td>
+                            <td>@product.CreatedAt?.ToString("dd-MMMM-yyyy")</td>
+                            <td>@product.CreatedBy</td>
+                            <td>@product.UpdatedAt</td>
+                            <td>@product.UpdatedBy</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

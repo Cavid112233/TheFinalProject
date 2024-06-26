@@ -1,0 +1,70 @@
+﻿@model HomeVM
+
+@foreach (Product product in Model.Products)
+{
+    <div class="handLight">
+        <div class="product-inf">
+            <a asp-controller="product" asp-action="details" asp-route-id="@product.Id">
+                @if (product.DiscountedPrice > 0)
+                {
+                    <span class="on-sale">Sale!</span>
+
+                }
+                <img src="~/assets/images/product/@product.MainImage" alt="">
+                <h4>@product.Title</h4>
+            </a>
+
+        </div>
+
+        <div class="prices">
+            @if (product.DiscountedPrice > 0)
+            {
+                <del><span class="product_salePrice">$@product.Price</span></del>
+                <span class="product_Price">$@product.DiscountedPrice</span>
+
+            }
+            else
+            {
+                <span class="product_Price">$@product.Price</span>
+            }
+
+        </div>
+        <div class="rating">
+            @if (product.Reviews?.Count() > 0)
+            {
+                int sumRatings = 0;
+                foreach (var review in product.Reviews)
+                {
+                    sumRatings += (int)review.Star;
+                }
+                int averageRating = sumRatings / product.Reviews.Count();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (i < averageRating)
+                    {
+                        <span><i class='bx bxs-star'></i></span>
+                    }
+                    else
+                    {
+                        <span><i class='bx bx-star'></i></span>
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    <span><i class='bx bx-star'></i></span>
+                }
+            }
+        </div>
+        <div class="cart_btn">
+            <a  data-id="@product.Id" class="addToCart">Add To Cart</a>
+        </div>
+
+    </div>
+
+
+}
+

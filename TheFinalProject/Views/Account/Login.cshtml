@@ -1,0 +1,46 @@
+﻿@model LoginVM
+<!-- Login - Register -->
+<section id="Sign">
+    <div class="container">
+        <div class="section-container">
+            <div class="login-register-wrapper">
+                <div class="login-register-tabs">
+                    <div class="logreg-tabs">
+                        <a class="log-reg-tab-li log-reg-tab-li-active">Login</a>
+                        <a class="log-reg-tab-li " asp-controller="account" asp-action="register">Register</a>
+                    </div>
+                </div>
+                <!-- Login Content -->
+                <div class="login-register-tab-content login-register-tab-content-active">
+                    <form method="post" asp-controller="account" asp-action="login">
+                        <div asp-validation-summary="ModelOnly " class="text text-danger"></div>
+                        <div class="login-content">
+                            <div class="col-12 my-3">
+                                <label asp-for="Email" class="form-label">Email*</label>
+                                <input asp-for="Email" style="background-color: #F6F5F2;" class="form-control">
+                                <span asp-validation-for="Email" class="text text-danger"></span>
+                            </div>
+                            <div class="col-12 my-3">
+                                <label asp-for="Password" class="form-label">Password*</label>
+                                <input asp-for="Password" style="background-color: #F6F5F2;" class="form-control">
+                                <span asp-validation-for="Password" class="text text-danger"></span>
+                            </div>
+                            <div class="col-12 my-2 align-items-center d-flex">
+                                <input type="checkbox" name="" asp-for="RemindMe">
+                                <label asp-for="RemindMe">Remember me</label>
+                            </div>
+                            <button type="submit" class="login_btn col-12 my-3">Login</button>
+                            <a class="lostPassword" href="">Lost Password?</a>
+
+                        </div>
+                    </form>
+                </div>
+                <!-- Login Content -->
+                <!-- Register Content -->
+                
+                <!-- Register Content -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login - Register -->

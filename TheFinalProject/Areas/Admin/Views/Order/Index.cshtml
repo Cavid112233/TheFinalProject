@@ -1,0 +1,95 @@
+﻿@model PagenatedList<Order>
+@{
+    int count = (Model.PageIndex - 1) * 5;
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Orders /</span> Index</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="d-flex align-items-center">
+            <h5 class="card-header">Order Management</h5>
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:15%;">Id</th>
+                        <th>Full Name</th>
+                        <th>Created At</th>
+                        <th>Product Count</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (Order order in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td style="width:15%;"><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                            <td>@($"{order.Name} {order.Surname}")</td>
+                            <td>
+                                <span class="badge bg-label-primary me-1">@order.CreatedAt?.ToString("dd-MMM-yyyy")</span>
+                            </td>
+                            <td>@order.OrderItems?.Count()</td>
+
+                            <td>@order.OrderItems?.Sum(o => (o.Count * o.Price))</td>
+                            <td><span class="badge bg-label-primary me-1">@order.Status</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" asp-area="manage" asp-controller="order" asp-action="detail" asp-route-id="@order.Id"><i class='bx bx-detail me-1'></i> Detail</a>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+    <nav aria-label="Page navigation" class="my-4 d-flex justify-content-center">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item prev">
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex-1)">
+                        <i class="tf-icon bx bx-chevrons-left"></i>
+                    </a>
+                </li>
+
+            }
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active":"")">
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@i">@i</a>
+                </li>
+            }
+
+            @if (Model.PageIndex < Model.TotalPage)
+            {
+                <li class="page-item next">
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex+1)">
+                        <i class="tf-icon bx bx-chevrons-right"></i>
+                    </a>
+                </li>
+
+            }
+
+        </ul>
+    </nav>
+
+</div>
+
+
+

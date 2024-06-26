@@ -1,0 +1,28 @@
+﻿@model ShopVM
+
+<!-- Shop Page Heading -->
+<section id="Heading">
+    <div class="container">
+        <div class="heading-content">
+            <div class="section-container">
+                <h1>The Shop</h1>
+                <p>Well designed lights for your home & office environments.  <br> Our high quality lights will make your place modern. </p>
+                <div class="category_btns">
+                    <a class="learn-more explore category_btn" href="">Home Decor</a>
+                    <a class="learn-more explore category_btn" href="">Indoor Lighting</a>
+                    <a class="learn-more explore category_btn" href="">Kitchen Lighting</a>
+                    <a class="learn-more explore category_btn" href=""> Outdoor Lightning</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- Shop Page Heading -->
+<!-- Shop Main -->
+<section id="Shop">
+   @await Html.PartialAsync("_ShopListPartial",Model)
+</section>
+<!-- Shop Main -->

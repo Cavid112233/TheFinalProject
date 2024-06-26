@@ -1,0 +1,49 @@
+﻿@model Review
+<form method="post" asp-controller="product" asp-action="AddReview">
+    <div class="text text-danger my-2" asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" name="ProductId" value="@Model.ProductId"/>
+    <span>Your email address will not be published. Required fields are marked *</span>
+    <div class="review-form-rating">
+        <span>Your rating *</span>
+        <div class="stars">
+            <span class="star-rating">
+                <input id="star-5" type="radio" asp-for="Star" value="5" />
+                <label asp-for="Star" for="star-5" title="5 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                </label>
+                <input id="star-4" type="radio"  asp-for="Star" value="4" />
+                <label asp-for="Star" for="star-4" title="4 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                </label>
+                <input id="star-3" type="radio"  asp-for="Star" value="3" />
+                <label asp-for="Star" for="star-3" title="3 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                </label>
+                <input id="star-2" type="radio"  asp-for="Star" value="2" />
+                <label asp-for="Star" for="star-2" title="2 stars">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                </label>
+                <input id="star-1" type="radio"  asp-for="Star" value="1" />
+                <label asp-for="Star" for="star-1" title="1 star">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                </label>
+            </span>
+        </div>
+    </div>
+    <div class="col-12 my-3">
+        <label asp-for="Description" class="form-label">Your review *</label>
+        <textarea asp-for="Description" style="background-color: #F6F5F2; min-height: 180px;" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+    </div>
+    <div class="col-12 my-3">
+        <label asp-for="Name" class="form-label"> Name*</label>
+        <input asp-for="Name" style="background-color: #F6F5F2;" type="text" class="form-control" id="inputFirstName">
+    </div>
+    <div class="col-12 my-3">
+        <label asp-for="Email" class="form-label">Email*</label>
+        <input asp-for="Email" style="background-color: #F6F5F2;" class="form-control" id="inputEmail" placeholder="emin14@mail.ru">
+    </div>
+    
+    <div>
+        <button type="submit" class="review-submit-btn">Submit</button>
+    </div>
+</form>

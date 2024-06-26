@@ -1,0 +1,33 @@
+﻿@model UserChangeRole
+
+<h4 class="fw-bold px-5 pt-3 m-2"><span class="text-muted fw-light">User /</span> Role Change</h4>
+
+<!-- Basic -->
+<div class="col-md-6 pt-2 m-4">
+    <div class="card mb-4">
+        <h5 class="card-header">Basic</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <form method="post" asp-action="changerole" asp-area="manage" asp-controller="user" >
+                <div class="input-group my-2 d-none">
+                   <label asp-for="UserId"></label>
+                    <input asp-for="UserId" class="form-control"/>
+
+
+                </div>
+                <div class="my-3">
+                    <label asp-for="RoleId" for="exampleFormControlSelect1" class="form-label">Role selection</label>
+                    <select asp-for="RoleId" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-items="new SelectList(ViewBag.Role,nameof(IdentityRole.Id), nameof(IdentityRole.Name))">
+                    </select>
+                    <span asp-validation-for="RoleId" class="text text-danger"></span>
+                </div>
+                
+                
+                <button type="submit" class="btn btn-primary my-4 col-12">Submit</button>
+            </form>
+            @Html.ValidationSummary()
+
+
+        </div>
+    </div>
+</div>
+

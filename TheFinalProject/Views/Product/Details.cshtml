@@ -1,0 +1,196 @@
+﻿@model ProductReviewVM
+<section id="ProductDetail">
+    <div class="container">
+        <div class="section-container" style="background-color: #F6F5F2;">
+            <div class="product-inner">
+                <div class="product-images">
+                    <div class="product-main-image" data-scale="1.6">
+                        <img id="MainImg" src="~/assets/images/product/@Model.Product.MainImage" alt="">
+                    </div>
+                    <div class="product-thumb-images">
+                        <ul>
+                            @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Count > 0)
+                            {
+                                foreach (ProductImage productImage in Model.Product.ProductImages)
+                                {
+                                    <li>
+                                        <img class="detail-image" onclick="ChangeImage(this)" src="~/assets/images/product/@productImage.Image" alt="">
+                                    </li>
+
+                                }
+
+                            }
+
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title">@Model.Product.Title</h2>
+                    <div class="product-rating">
+                        <div class="product-star-rating">
+                            @if (Model.Product.Reviews.Count() > 0)
+                            {
+                                int sumRatings = 0;
+                                foreach (var review in Model.Product.Reviews)
+                                {
+                                    sumRatings += (int)review.Star; 
+                                }
+                                int averageRating = sumRatings / Model.Product.Reviews.Count();
+
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    if (i < averageRating)
+                                    {
+                                        <span><i class='bx bxs-star'></i></span>
+                                    }
+                                    else
+                                    {
+                                        <span><i class='bx bx-star'></i></span> 
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    <span><i class='bx bx-star'></i></span>
+                                }
+                            }
+
+                        </div>
+                        <a href="#comments">(<span>@Model.Product.Reviews.Count()</span> customer review)</a>
+
+                    </div>
+                    <div class="prices">
+                        @if (Model.Product.DiscountedPrice > 0)
+                        {
+                            <del><span class="product_salePrice">$3,449.00</span></del>
+                            <span class="product_Price">$@(Model.Product.Price).00</span>
+
+                        }
+                        else
+                        {
+                            <span class="product_Price">$@(Model.Product.Price).00</span>
+                        }
+                    </div>
+                    <div class="product-short-desc">
+                        <p>@Model.Product.Description</p>
+                    </div>
+                    <button data-id="@Model.Product.Id" >Add To Cart</button>
+
+                    <hr>
+                    <span class="product-category">Category:<a class="" >@Model.Product.Category.Name</a></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="ProductInfo">
+    <div class="container">
+        <div class="section-container">
+            <div class="product-details-tabs">
+                <ul class="product-tab-ul">
+                    <li class="product-tab-li product-tab-li-active">Description</li>
+                    <li class="product-tab-li">Additional information</li>
+                    <li class="product-tab-li"> Reviews <span>(@(Model.Product.Reviews.Count()))</span></li>
+                </ul>
+                <div class="product-tab-content product-tab-content-active">
+                    <div class="description-content">
+                        <p>@Model.Product.FullDescription</p>
+                        <hr>
+                        <img src="https://demo.agnidesigns.com/luminate/wp-content/uploads/2022/06/product-thumbnail-24-3.png" alt="">
+                    </div>
+                </div>
+                <div class="product-tab-content">
+                    <div class="info-content">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Weight</th>
+                                    <td>2 kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Dimensions</th>
+                                    <td>20 × 20 × 60 cm</td>
+                                </tr>
+                                <tr>
+                                    <th>Voltage</th>
+                                    <td>240, 120</td>
+                                </tr>
+                                <tr>
+                                    <th>Power Consumption</th>
+                                    <td>20 Watts</td>
+                                </tr>
+                                <tr>
+                                    <th>Location</th>
+                                    <td>Indoor & Outdoor</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="product-tab-content">
+                    <div class="reviews-content">
+                        <div id="comments">
+                            <h2>(@(Model.Product.Reviews.Count())) Review For <span class="product-title">@Model.Product.Title</span></h2>
+                            <hr>
+                            <ul>
+                                <li>
+                                    @if (Model.Product.Reviews != null && Model.Product.Reviews.Count() > 0)
+                                    {
+                                        foreach (Review review in Model.Product.Reviews)
+                                        {
+                                            <div class="comment-box">
+                                                <img src="https://secure.gravatar.com/avatar/fbf2b9cfc0a472389f3620e471bdf0e9?s=120&d=mm&r=g" alt="">
+                                                <div class="comment-text">
+                                                    <div class="review-rating">
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <span><i class='bx @(i<= review.Star ? "bxs-star":"bx-star")'></i></span>
+
+                                                        }
+
+                                                    </div>
+                                                    <p><strong class="review-username">@review.Name</strong>- <span>@review.CreatedAt</span></p>
+                                                    <div class="comment-desc">
+                                                        <p>@review.Description</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+
+                                    }
+
+
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="review-form">
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                {
+                                    <h3>Add Review</h3>
+                                    @await Html.PartialAsync("_AddReviewPartial",Model.Review)
+
+
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

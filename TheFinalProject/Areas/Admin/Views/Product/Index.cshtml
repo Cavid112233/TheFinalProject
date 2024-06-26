@@ -1,0 +1,122 @@
+﻿@model PagenatedList<Product>
+@{
+    int count = (Model.PageIndex - 1) * 4;
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products /</span> Index</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="d-flex align-items-center">
+            <h5 class="card-header">Product Management</h5>
+            @if (User.IsInRole("SuperAdmin"))
+            {
+                <a class="btn btn-primary text-white" asp-area="manage" asp-controller="product" asp-action="create">Create</a>
+
+            }
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:15%;">Id</th>
+                        <th>Name</th>
+                        <th>Created By</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (Product product in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td style="width:15%;"><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                            <td>@product.Title</td>
+                            <td>
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li data-bs-toggle="tooltip"
+                                        data-popup="tooltip-custom"
+                                        data-bs-placement="top"
+                                        class="avatar avatar-xs pull-up"
+                                        title="Lilian Fuller">
+                                        <img src="~/manage/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
+                                    </li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                @if (product.CreatedAt != null)
+                                {
+                                    <span class="badge bg-label-primary me-1">@product.CreatedAt</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-label-primary me-1">2023</span>
+
+                                }
+                            </td>
+
+
+                            <td>
+
+
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" asp-area="manage" asp-controller="product" asp-action="details" asp-route-id="@product.Id"><i class='bx bx-detail me-1'></i> Detail</a>
+                                        <a class="dropdown-item" asp-area="manage" asp-controller="product" asp-action="update" asp-route-id="@product.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        @if (User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a class="dropdown-item" asp-area="manage" asp-controller="product" asp-action="delete" asp-route-id="@product.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+    <nav aria-label="Page navigation" class="my-4 d-flex justify-content-center">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item prev">
+                    <a class="page-link" asp-action="Index" asp-controller="product" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex-1)">
+                        <i class="tf-icon bx bx-chevrons-left"></i>
+                    </a>
+                </li>
+
+            }
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active":"")">
+                    <a class="page-link" asp-action="Index" asp-controller="product" asp-area="manage" asp-route-pageIndex="@i">@i</a>
+                </li>
+            }
+
+            @if (Model.PageIndex < Model.TotalPage)
+            {
+                <li class="page-item next">
+                    <a class="page-link" asp-action="Index" asp-controller="product" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex+1)">
+                        <i class="tf-icon bx bx-chevrons-right"></i>
+                    </a>
+                </li>
+
+            }
+
+        </ul>
+    </nav>
+
+</div>
+
+
+
