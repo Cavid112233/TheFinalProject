@@ -7,7 +7,7 @@ using TheFinalProject.Models;
 
 namespace TheFinalProject.Areas.Admin.Controllers
 {
-    [Area("manage")]
+    [Area("Admin")]
     [Authorize(Roles = "SuperAdmin,Admin")]
     public class MaterialController : Controller
     {
