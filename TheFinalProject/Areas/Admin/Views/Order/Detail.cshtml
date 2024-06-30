@@ -11,7 +11,7 @@
             <h3 class="h3 mb-3">Order: <span class="text-info">@Model.Status</span></h3>
         </div>
         <div class="col-lg-2">
-            <a class="btn btn-primary" asp-action="index" asp-controller="order" asp-area="manage">Go To Home</a>
+            <a class="btn btn-primary" asp-action="index" asp-controller="order" asp-area="Admin">Go To Home</a>
         </div>
 
     </div>
@@ -68,7 +68,7 @@
     <div class="card mb-4">
         <h5 class="card-header">Change Order Status</h5>
         <div class="card-body demo-vertical-spacing demo-only-element">
-            <form method="post" asp-action="changeStatus" asp-area="manage" asp-controller="order">
+            <form method="post" asp-action="changeStatus" asp-area="Admin" asp-controller="order">
                 <input type="hidden" name="Id" value="@Model.Id" class="form-control" />
                 <input type="hidden" value="@Model.No" class="form-control" />
                 <div class="my-3">

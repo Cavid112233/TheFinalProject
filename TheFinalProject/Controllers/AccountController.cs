@@ -155,15 +155,15 @@ namespace TheFinalProject.Controllers
                 basket = JsonConvert.SerializeObject(basketVMs);
                 HttpContext.Response.Cookies.Append("basket", basket);
             }
-            //if (string.IsNullOrWhiteSpace(basket))
-            //{
+            if (string.IsNullOrWhiteSpace(basket))
+            {
 
 
-            //}
-            //else
-            //{
-            //    HttpContext.Response.Cookies.Append("basket", "");
-            //}
+            }
+            else
+            {
+                HttpContext.Response.Cookies.Append("basket", "");
+            }
 
 
             return RedirectToAction("profile", "Account");

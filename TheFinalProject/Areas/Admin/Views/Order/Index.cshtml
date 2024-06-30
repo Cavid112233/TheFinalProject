@@ -45,7 +45,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" asp-area="manage" asp-controller="order" asp-action="detail" asp-route-id="@order.Id"><i class='bx bx-detail me-1'></i> Detail</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="order" asp-action="detail" asp-route-id="@order.Id"><i class='bx bx-detail me-1'></i> Detail</a>
 
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
             @if (Model.PageIndex > 1)
             {
                 <li class="page-item prev">
-                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex-1)">
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="Admin" asp-route-pageIndex="@(Model.PageIndex-1)">
                         <i class="tf-icon bx bx-chevrons-left"></i>
                     </a>
                 </li>
@@ -72,14 +72,14 @@
             @for (int i = Model.StartPage; i <= Model.EndPage; i++)
             {
                 <li class="page-item @(Model.PageIndex == i ? "active":"")">
-                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@i">@i</a>
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="Admin" asp-route-pageIndex="@i">@i</a>
                 </li>
             }
 
             @if (Model.PageIndex < Model.TotalPage)
             {
                 <li class="page-item next">
-                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="manage" asp-route-pageIndex="@(Model.PageIndex+1)">
+                    <a class="page-link" asp-action="Index" asp-controller="order" asp-area="Admin" asp-route-pageIndex="@(Model.PageIndex+1)">
                         <i class="tf-icon bx bx-chevrons-right"></i>
                     </a>
                 </li>
