@@ -28,7 +28,6 @@ namespace TheFinalProject.Areas.Admin.Controllers
         [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Index()
         {
-            //Not Working
             List<UserVM> users = await _userManager.Users
                 .Where(u => u.UserName != User.Identity.Name)
                 .Select(x => new UserVM
