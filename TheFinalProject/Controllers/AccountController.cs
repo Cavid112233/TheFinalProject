@@ -44,17 +44,17 @@ namespace TheFinalProject.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.Username
             };
-            if (!await _userManager.Users.AnyAsync(e => e.NormalizedEmail == registerVM.Email.ToUpperInvariant().Trim()))
-            {
-                ModelState.AddModelError("Email", $"{registerVM.Email} is already taken");
-                return View(registerVM);
-            }
+            //if (!await _userManager.Users.AnyAsync(e => e.NormalizedEmail == registerVM.Email.ToUpperInvariant().Trim()))
+            //{
+            //    ModelState.AddModelError("Email", $"{registerVM.Email} is already taken");
+            //    return View(registerVM);
+            //}
 
-            if (!await _userManager.Users.AnyAsync(e => e.NormalizedUserName == registerVM.Username.ToUpperInvariant().Trim()))
-            {
-                ModelState.AddModelError("Username", $"{registerVM.Username} is already taken");
-                return View(registerVM);
-            }
+            //if (!await _userManager.Users.AnyAsync(e => e.NormalizedUserName == registerVM.Username.ToUpperInvariant().Trim()))
+            //{
+            //    ModelState.AddModelError("Username", $"{registerVM.Username} is already taken");
+            //    return View(registerVM);
+            //}
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
             if (!identityResult.Succeeded)
             {
@@ -75,7 +75,6 @@ namespace TheFinalProject.Controllers
             await _roleManager.CreateAsync(new IdentityRole("Admin"));
             await _roleManager.CreateAsync(new IdentityRole("Member"));
             return Content("Successfully");
-
         }
 
         [HttpGet]
@@ -155,15 +154,15 @@ namespace TheFinalProject.Controllers
                 basket = JsonConvert.SerializeObject(basketVMs);
                 HttpContext.Response.Cookies.Append("basket", basket);
             }
-            if (string.IsNullOrWhiteSpace(basket))
-            {
+            //if (string.IsNullOrWhiteSpace(basket))
+            //{
 
 
-            }
-            else
-            {
-                HttpContext.Response.Cookies.Append("basket", "");
-            }
+            //}
+            //else
+            //{
+            //    HttpContext.Response.Cookies.Append("basket", "");
+            //}
 
 
             return RedirectToAction("profile", "Account");

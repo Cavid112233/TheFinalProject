@@ -66,8 +66,7 @@
                     <div class="prices">
                         @if (Model.Product.DiscountedPrice > 0)
                         {
-                            <del><span class="product_salePrice">$3,449.00</span></del>
-                            <span class="product_Price">$@(Model.Product.Price).00</span>
+                            <span class="product_Price">$@(Model.Product.DiscountedPrice).00</span>
 
                         }
                         else
